@@ -8,6 +8,7 @@ class Api::AuthorsController < ApplicationController
         render json: @author
     end
     def create
+        puts author_params
         @author = Author.new(author_params)
         if(@author.save)
             render json: @author
@@ -24,6 +25,7 @@ class Api::AuthorsController < ApplicationController
     end
     def destroy
         render json: @author.destroy
+    end
 
     private
 
@@ -32,8 +34,6 @@ class Api::AuthorsController < ApplicationController
     end
     def author_params
         params.require(:author).permit(:name, :age)
-    end
-
     end
 
 
